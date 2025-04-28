@@ -24,10 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k!odf6757tn5v1s_msmo+qkkx9%k!v@fx*9by76jib!!2nx2mu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+
+
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'expense-tracker-production-815d.up.railway.app',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://expense-tracker-production-815d.up.railway.app',
 ]
 
 
