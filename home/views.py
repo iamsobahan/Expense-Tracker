@@ -23,7 +23,7 @@ def expense(request):
 
         Transaction.objects.create(descriptions=description, amount=amount, created_by = request.user)
         messages.success(request, "Transaction added successfully!")
-        return redirect('/')
+        return redirect('expense')
     
     context = {
         "transactions" : Transaction.objects.filter(created_by = request.user),
