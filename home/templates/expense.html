@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Expense Tracker
+{% endblock  %}
+
+{% block content %}
+    <h1>Hi! {{request.user}} Welcome your Expense Tracker</h1>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://i.ibb.co/jfScDTC/budget.png"
+          alt="Expense Tracker"
+        />
+        <div class="balance-container">
+          <h2>Your Balance</h2>
+          <h2 id="balance" class="balance">{{balance}}৳</h2>
+        </div>
+      </div>
+      <div class="inc-exp-container">
+        <div>
+          <h4>Income</h4>
+          <p id="money-plus" class="money plus">{{income}}৳</p>
+        </div>
+        <div>
+          <h4>Expenses</h4>
+          <p id="money-minus" class="money minus">{{expense}}৳</p>
+        </div>
+      </div>
+      <h3>History</h3>
+      <ul id="list" class="list">
+          {% for transaction in transactions %}
+
+          <li class="{% if transaction.is_negetive %} minus {% else %} plus {% endif %}" style="margin-bottom: 22px;">
+          {{ transaction.descriptions }} <span style="text-align: end;">{{ transaction.amount }} ৳</span>
+          
+          <button class="delete-btn"><a style="color: white" href="{% url 'delete_item' transaction.uuid %}">X</a></button>
+          <h6 class="created" style="padding-top: 0; padding-bottom: 0; text-align: start;">{{ transaction.created_at }}</h6>
+    </li>
+    
+
+    
+  {% empty %}
+    <li>No transactions yet.</li>
+  {% endfor %}
+      </ul>
+      <h3>Add new transaction</h3>
+
+
+
+
+      <form id="form" method="post">
+      {% csrf_token %}
+        <div class="form-control">
+          <label for="text">Description</label>
+          <input name="description" type="text" id="text" placeholder="Enter description..." />
+        </div>
+        <div class="form-control">
+          <label for="amount"
+            >Amount <br />
+            <small>(-100 = expense, 100 = income)</small></label
+          >
+          <input name="amount" type="number" id="amount" placeholder="Enter amount..." />
+        </div>
+        <button class="btn" type="submit">Add transaction</button>
+      </form>
+    </div>
+    <!-- Notification -->
+    <div class="notification-container" id="notification">
+      <p>Please add a description and amount</p>
+    </div>
+
+{% if messages %}  
+    {% for message in messages %}
+    <script>
+       alert("{{message}}")
+    </script>        
+    {% endfor %}
+
+
+{% endif %}
+
+
+{% endblock  %}

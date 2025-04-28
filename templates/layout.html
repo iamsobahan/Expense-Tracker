@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+     <style>
+        .banner {
+            background: url("{% static 'media/banner.jpeg' %}") no-repeat;
+            background-size: contain;
+            width: 700px;
+            height: 350px
+            
+        
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ExpenseTracker.</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'expense' %}">Expense Tracker</a></li>
+
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li> 
+            {% else %}
+            <li><a href="{% url 'register' %}">Login/Register</a></li>
+            {% endif %}
+           
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    
+<footer class="footer" style="margin-top: 20px;">
+    <div class="footer-content">
+        <p>&copy; 2025 Expense Tracker. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" class="social-icon">Facebook</a>
+            <a href="#" class="social-icon">Portfolio</a>
+            <a href="#" class="social-icon">Linkedin</a>
+            <a href="#" class="social-icon">Github</a>
+            
+        </div>
+    </div>
+</footer>
+
+   
+</body>
+</html>

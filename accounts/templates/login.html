@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %} Login {% endblock %}
+{% block content %} 
+
+<div class="auth-container">
+        <h2>Login</h2>
+        <form  method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username or Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <script>
+        alert("{{message}}")
+    </script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

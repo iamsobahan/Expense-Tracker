@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %} Register {% endblock %}
+{% block content %} 
+<div class="auth-container">
+        <h2>Create Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" value="{{username | default:''}}" name="username" placeholder="Username" required>
+            <input type="email" value="{{email|default:''}}" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="cpassword" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <script>
+        alert("{{message}}")
+    </script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
