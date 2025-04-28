@@ -1,0 +1,414 @@
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+:root {
+  --main-color: #4CAF50;
+  --secondary-color: #393a57;
+  --ternary-color: #486ba6;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --background-color: #e5e6ed;
+  --background-secondary-color: #fff;
+  --border-color: #80717f;
+  --border-secondary-color: #bcc0cb;
+  --plus-color: #2ecc71;
+  --minus-color: #c0392b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+    padding: 0rem 2rem;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.1s;
+}
+
+.nav-links li a:hover {
+    color: #d9ffd9;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header img {
+  width: 4.5rem;
+  width: 4.5rem;
+  opacity: 0.5;
+}
+
+.balance-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin: 30px auto;
+  width: 350px;
+}
+
+h1 {
+  font-size: 1.25rem;
+}
+
+h2 {
+  font-size: 1.17rem;
+}
+
+.balance {
+  letter-spacing: 1px;
+  margin: 0;
+  font-size: 2rem;
+}
+
+h3 {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin: 40px 0 10px;
+}
+
+h2,
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.inc-exp-container {
+  background-color: var(--background-secondary-color);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid var(--border-secondary-color);
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.money.plus {
+  color: var(--plus-color);
+}
+
+.money.minus {
+  color: var(--minus-color);
+}
+
+label {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+input[type="text"],
+input[type="number"] {
+  border: 1px solid var(--border-secondary-color);
+  border-radius: 5px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: var(--main-color);
+  box-shadow: var(--box-shadow);
+  color: var(--background-secondary-color);
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.list li {
+  background-color: var(--background-secondary-color);
+  box-shadow: var(--box-shadow);
+  color: var(--ternary-color);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.list li.plus {
+  border-left: 5px solid var(--plus-color);
+}
+
+.list li.minus {
+  border-left: 5px solid var(--minus-color);
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: var(--minus-color);
+  color: var(--background-secondary-color);
+  box-shadow: var(--box-shadow);
+  border: 0;
+  font-size: 22px;
+  line-height: 22px;
+  padding: 10px;
+  margin: 10px 0;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(100%, -73%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.created {
+  cursor: pointer;
+  color: darkgray;
+  box-shadow: var(--box-shadow);
+  border: 0;
+  line-height: 22px;
+  padding: 10px;
+
+  position: absolute;
+  top: 20%;
+  right: 22%;
+  transform: translate(50%, 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+.list li:hover .created {
+  opacity: 1;
+}
+
+.notification-container {
+  background-color: var(--minus-color);
+  color: var(--background-secondary-color);
+  border-radius: 5px 5px 0 0;
+  padding: 15px 20px;
+  position: fixed;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notification-container.show {
+  opacity: 1;
+}
+
+.notification-container p {
+  margin: 0;
+}
+
+
+
+
+.auth-container {
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-container h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container input {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-container button {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-container button:hover {
+    background-color: #45a049;
+}
+
+.auth-container p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-container a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Banner Section with Overlay */
+
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+    z-index: 1; /* Make sure overlay is below text */
+}
+
+/* Banner Content */
+.banner-content {
+    position: relative; /* Make sure text is above the overlay */
+    z-index: 2; /* Ensure text appears above the overlay */
+}
+
+.banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.banner p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 0px 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    text-align: center;
+    width: 700px;
+}
+
+.footer-content {
+   
+    margin: 0 auto;
+}
+
+.footer p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+
+
+.social-icon {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #4CAF50;
+}
