@@ -44,7 +44,7 @@ def delete_item(request, uuid) :
 
     # If uuid is valid, continue
     Transaction.objects.get(uuid=uuid_obj).delete()
-    return redirect('/')
+    return redirect('expense')
 
 
 def home(request) : 
